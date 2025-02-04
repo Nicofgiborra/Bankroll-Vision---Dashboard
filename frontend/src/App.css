@@ -1,0 +1,297 @@
+/* app.css */
+
+/* 
+   Eliminamos el :root y el RESET, 
+   pues ahora están en index.css
+*/
+
+/* Estructura principal de la App */
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-unit);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Contenedor Principal */
+.main-container {
+  width: 100%;
+  padding: var(--spacing-unit);
+  transition: all var(--transition-speed) ease;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* =============================
+   LOGIN CONTAINER
+============================= */
+/* Padre que centra verticalmente */
+.login-page {
+  width: 100%;
+  min-height: 100vh; /* Asegura que cubra la altura de la ventana */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* Permite manejar capas si lo deseas */
+  padding: 1rem;
+
+  /* GRADIENTE ANIMADO */
+  /* Puedes ajustar los colores al gusto: aquí mezclamos tonos oscuros y cian/morado */
+  /* GRADIENTE OSCURO ANIMADO */
+  background: linear-gradient(
+    270deg,
+    #141e30,
+    #243b55,
+    #232526,
+    #414345,
+    #141e30
+  );
+
+  background-size: 800% 800%;
+  animation: gradientAnimation 20s ease infinite;
+}
+.login-page::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.178); /* Capa oscura */
+  pointer-events: none;
+}
+
+.login-container {
+  padding: 3rem 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-small);
+  width: 100%;
+  max-width: 450px;
+  margin: 2rem auto;
+  /* Fondo oscuro (puedes usar un 'glass effect' si gustas) */
+  background-color: #1f1f1f;
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 1; /* Se asegurará de quedar por encima si hay un overlay */
+}
+
+.login-container h2 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Form group */
+.form-group {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  /* Texto un poco más claro para contraste sobre fondo oscuro */
+  color: #dedede;
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  font-size: var(--font-size-base);
+  transition: all var(--transition-speed) ease;
+  background-color: #2b2b31;
+  color: #fff;
+}
+
+.form-group input::placeholder {
+  color: #aaaaaa;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(26, 35, 126, 0.2);
+}
+
+.form-group input:focus::placeholder {
+  color: transparent;
+}
+
+/* Botón Primario */
+.btn-primary {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-primary:hover {
+  background-color: #16216e;
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  background-color: #94a3b8;
+  cursor: not-allowed;
+}
+
+/* =============================
+   DASHBOARD
+============================= */
+.dashboard-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  padding: 2rem 0;
+}
+
+.dashboard-card {
+  /* Fondo oscuro */
+  background: #1f1f1f;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-small);
+  transition: all var(--transition-speed) ease;
+  border: 1px solid var(--border-color);
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-medium);
+}
+
+.dashboard-card h3 {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+/* =============================
+   ANIMACIONES
+============================= */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn var(--transition-speed) ease forwards;
+}
+
+/* Loading Spinner */
+.loading {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  border: 0.25em solid #f3f3f3;
+  border-top: 0.25em solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin var(--transition-speed) linear infinite;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* =============================
+   MEDIA QUERIES
+============================= */
+@media (max-width: 768px) {
+  .main-container {
+    padding: 0.5rem;
+  }
+
+  .login-container {
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+
+  .login-container h2 {
+    font-size: 1.2rem;
+  }
+
+  .dashboard-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --font-size-base: 0.875rem;
+  }
+
+  .main-container {
+    padding: 0;
+  }
+
+  .login-container {
+    padding: 1rem;
+  }
+
+  .form-group input {
+    padding: 0.6rem;
+  }
+}
+
+@media print {
+  :root {
+    --background-color: white;
+    --text-color: black;
+  }
+
+  body {
+    overflow-x: visible !important;
+  }
+
+  .login-container,
+  .dashboard-container {
+    box-shadow: none;
+  }
+}

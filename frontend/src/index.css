@@ -1,0 +1,55 @@
+/* index.css */
+
+/* IMPORTACIÓN DE FUENTE (Opcional, si no la tienes en tu HTML) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* 
+  1) VARIABLES GLOBALES (Tema Oscuro)
+*/
+:root {
+  --primary-color: #1a237e;
+  --secondary-color: #1481ee;
+  --background-color: #0d0d11c2;
+  /* Texto claro para buen contraste con fondo oscuro */
+  --text-color: #cccccc;
+  --error-color: #dc2626;
+  --success-color: #16a34a;
+  /* Bordes oscuros para separaciones sutiles */
+  --border-color: #2f2f35;
+  --transition-speed: 0.3s;
+  --spacing-unit: 1rem;
+  --radius: 8px;
+  /* Sombras con mayor opacidad en entorno oscuro */
+  --shadow-small: 0 4px 6px rgba(0, 0, 0, 0.5);
+  --shadow-medium: 0 6px 12px rgba(0, 0, 0, 0.5);
+  /* Tipografía base */
+  --font-primary: 'Poppins', sans-serif;
+  --font-size-base: 1rem;
+  --line-height-base: 1.6;
+}
+
+/* 
+  2) RESET Y ESTILOS GLOBALES
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--text-color);
+  background-color: var(--background-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

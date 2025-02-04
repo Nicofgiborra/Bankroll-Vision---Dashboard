@@ -1,0 +1,226 @@
+# Guía de Desarrollo para el Proyecto
+
+## 1. Configuración Inicial del Proyecto
+
+### **Backend**
+- **Selección del Framework**:
+  - Evaluar las ventajas de FastAPI vs Django.
+  - Decidir cuál se adapta mejor a los requerimientos del proyecto, considerando la facilidad para implementar autenticación y escalabilidad.
+- **Inicialización del Proyecto**:
+  - Crear el proyecto backend utilizando el framework seleccionado.
+- **Configuración del Entorno Virtual**:
+  - Configurar un entorno virtual para aislar las dependencias.
+- **Instalación de Dependencias**:
+  - Instalar las librerías necesarias (por ejemplo, ORM, herramientas de migración, librerías para autenticación como JWT o Django Rest Framework).
+- **Configuración de la Base de Datos**:
+  - Elegir el sistema de gestión de bases de datos adecuado (por ejemplo, PostgreSQL, SQLite).
+  - Configurar la conexión a la base de datos en `backend/core/config.py`.
+- **Preparación de Migraciones Iniciales**:
+  - Crear y aplicar las migraciones para establecer la estructura inicial de la base de datos.
+
+### **Frontend**
+- **Selección del Framework**:
+  - Evaluar las opciones entre React, Vue.js y Angular.
+  - Seleccionar el framework que mejor se alinee con los objetivos del dashboard y facilite la escalabilidad.
+- **Inicialización del Proyecto**:
+  - Crear el proyecto frontend utilizando el framework seleccionado.
+- **Configuración de Herramientas de Desarrollo**:
+  - Configurar herramientas como Webpack, Babel, ESLint según las necesidades del proyecto.
+- **Instalación de Dependencias**:
+  - Instalar las librerías necesarias para el desarrollo (por ejemplo, Axios para solicitudes HTTP, librerías de UI).
+
+## 2. Definición del Diseño Visual del Dashboard
+
+### **Guía de Estilos**
+- **Paleta de Colores**:
+  - **Colores Primarios y Secundarios**: Selección de una paleta de colores que refleje la identidad de la aplicación, garantizando buen contraste y legibilidad.
+    - **Primario**: Azul (#1976d2)
+    - **Secundario**: Gris Claro (#f5f5f5)
+    - **Accento**: Verde (#4caf50) para destacar elementos importantes.
+- **Tipografía**:
+  - **Fuente Principal**: Utilización de fuentes modernas y legibles como "Roboto" o "Open Sans" para títulos y textos.
+  - **Jerarquía Tipográfica**: Definición clara de tamaños y pesos de fuente para diferenciar títulos, subtítulos y cuerpo de texto.
+- **Estilos de Componentes**:
+  - **Botones**: Diseño consistente de botones con tamaños, colores y efectos al pasar el cursor.
+  - **Formularios**: Campos de entrada claros con etiquetas e indicadores de validación.
+  - **Tarjetas y Contenedores**: Uso de tarjetas para organizar información de manera estructurada.
+
+### **Wireframes y Mockups**
+- **Wireframes Iniciales**:
+  - **Página de Inicio de Sesión**: Estructura básica con campos para usuario y contraseña.
+  - **Dashboard Principal**: Disposición de métricas clave, gráficos y tablas interactivas.
+  - **Sección de Configuración**: Área para seleccionar la carpeta de manos y gestionar preferencias.
+- **Mockups Detallados**:
+  - **Uso de Herramientas de Diseño**: Creación de mockups detallados en Figma para visualizar la interfaz final.
+  - **Prototipos Interactivos**: Desarrollo de prototipos que permitan navegar entre las diferentes secciones antes de la implementación.
+
+### **Selección de Librerías de UI**
+- **Material-UI**:
+  - **Ventajas**: Componentes pre-estilizados, alta personalización y soporte para temas.
+  - **Implementación**: Integración de Material-UI para acelerar el desarrollo y mantener una estética moderna.
+- **Iconografía**:
+  - **Librería de Iconos**: Uso de Material Icons o FontAwesome para mejorar la representación gráfica de acciones y datos.
+
+### **Componentes Reutilizables**
+- **Botones y Formularios**:
+  - **Consistencia**: Diseño uniforme para todos los botones y campos de formulario.
+  - **Estados**: Definición de estados normales, hover, y activos para una mejor interacción.
+- **Gráficos y Visualizaciones**:
+  - **Librerías de Gráficos**: Utilización de Chart.js o Recharts para representar métricas como ROI, profit, etc.
+  - **Personalización**: Adaptación de los gráficos para que se alineen con la guía de estilos.
+- **Tablas Interactivas**:
+  - **Funcionalidades**: Implementación de filtros, ordenamiento y paginación.
+  - **Estilos**: Aplicación de estilos consistentes para mejorar la legibilidad y usabilidad.
+
+### **Responsividad y Accesibilidad**
+- **Diseño Responsivo**:
+  - **Adaptabilidad**: Asegurar que la interfaz se visualice correctamente en dispositivos móviles, tablets y desktops.
+  - **Flexbox y Grid**: Uso de técnicas de diseño responsivo para organizar los elementos de manera flexible.
+- **Accesibilidad**:
+  - **Contraste de Colores**: Garantizar que los colores utilizados cumplan con los estándares de accesibilidad.
+  - **Etiquetas y ARIA**: Implementación de etiquetas y roles ARIA para mejorar la navegación con lectores de pantalla.
+  - **Navegación con Teclado**: Asegurar que todos los elementos interactivos sean accesibles mediante el teclado.
+
+### **Prototipos y Validación de Diseño**
+- **Prototipos Interactivos**:
+  - **Herramientas Utilizadas**: Creación de prototipos en Figma para visualizar y validar el flujo de la aplicación.
+  - **Feedback del Usuario**: Recopilación de feedback temprano para ajustar el diseño según las necesidades.
+- **Iteración del Diseño**:
+  - **Ajustes Basados en Feedback**: Refinar los diseños en base al feedback recibido para mejorar la experiencia del usuario.
+
+## 3. Implementación de la Autenticación
+
+### **Backend**
+- **Configuración del Sistema de Autenticación**:
+  - Implementar un sistema de autenticación utilizando tokens JWT o sesiones, según el framework elegido.
+  - Crear modelos de usuario que incluyan campos de usuario y contraseña.
+- **Creación de Endpoints de Autenticación**:
+  - Desarrollar endpoints para registro, inicio de sesión y gestión de usuarios.
+- **Protección de Rutas**:
+  - Asegurar que las rutas que requieren autenticación estén protegidas y solo accesibles para usuarios autenticados.
+
+### **Frontend**
+- **Diseño de la Página de Inicio de Sesión**:
+  - Implementar la interfaz de inicio de sesión siguiendo los wireframes y la guía de estilos.
+- **Gestión del Estado de Autenticación**:
+  - Utilizar Context API o Redux para manejar el estado de autenticación y almacenar tokens JWT.
+- **Protección de Rutas en el Frontend**:
+  - Implementar rutas protegidas que solo sean accesibles para usuarios autenticados.
+- **Componentes de Registro e Inicio de Sesión**:
+  - Desarrollar formularios para el registro de nuevos usuarios y el inicio de sesión existente.
+
+## 4. Modificación de la Configuración de la Aplicación
+
+### **Backend**
+- **Añadir Opción de Selección de Carpeta**:
+  - Implementar una configuración que permita al usuario seleccionar la carpeta donde se almacenan las manos.
+- **Actualizar `backend/core/config.py`**:
+  - Incluir la nueva ruta de la carpeta seleccionada en el archivo de configuración.
+
+### **Frontend**
+- **Crear Sección de "Configuración"**:
+  - Diseñar y desarrollar una sección en la interfaz de usuario donde el usuario pueda seleccionar la carpeta de manos.
+
+## 5. Implementación de la Selección de Carpeta
+
+### **Frontend**
+- **Desarrollar Componente de Selección de Carpeta**:
+  - Crear un componente que permita al usuario navegar y seleccionar una carpeta en su sistema de archivos.
+  - Utilizar APIs del navegador o Electron (si es una aplicación de escritorio) para acceder al sistema de archivos.
+
+### **Backend**
+- **Crear Endpoint para Guardar la Ruta Seleccionada**:
+  - Desarrollar un endpoint que reciba y almacene la ruta de la carpeta seleccionada por el usuario.
+- **Validar la Ruta Proporcionada**:
+  - Asegurarse de que la ruta es válida y que la aplicación tiene los permisos necesarios para acceder a ella.
+
+## 6. Procesamiento de Archivos de Manos
+
+### **Backend**
+- **Función para Escanear la Carpeta**:
+  - Implementar una función que escanee la carpeta seleccionada y detecte nuevos archivos `.txt`.
+- **Implementar un Parser**:
+  - Desarrollar un parser que lea y extraiga la información relevante de cada archivo de manos.
+- **Calcular Métricas Clave**:
+  - Basarse en los datos extraídos para calcular métricas como bank total, ROI, profit, bb/100, etc.
+- **Almacenar Información en la Base de Datos**:
+  - Guardar las métricas calculadas en la base de datos para su posterior uso en el dashboard.
+
+## 7. Creación del Dashboard
+
+### **Frontend**
+- **Diseñar Componente de Dashboard**:
+  - Crear un componente visual que muestre las métricas principales mediante gráficos y números destacados.
+- **Implementar Tabla Interactiva de Sesiones**:
+  - Desarrollar una tabla que permita filtrar y ordenar las sesiones según los parámetros especificados.
+- **Implementar Navegación y Estructura Modular**:
+  - Organizar el frontend en módulos o secciones para facilitar la escalabilidad y adición de nuevas funciones en el futuro.
+
+## 8. Integración con el Backend
+
+### **Frontend**
+- **Consumir APIs del Backend**:
+  - Implementar llamadas a las APIs desarrolladas para obtener los datos necesarios para el dashboard.
+- **Gestión de Estado Global**:
+  - Utilizar herramientas como Redux o Context API para manejar el estado de la aplicación de manera eficiente.
+
+## 9. Actualización Automática de Datos
+
+### **Backend**
+- **Implementar Tarea Programada**:
+  - Utilizar herramientas como Celery o cron jobs para escanear periódicamente la carpeta de manos en busca de nuevos archivos.
+- **Procesamiento Automático de Nuevos Datos**:
+  - Asegurar que los nuevos datos sean procesados y actualizados en la base de datos sin intervención manual.
+
+## 10. Pruebas y Validación
+
+### **Backend**
+- **Pruebas Unitarias**: Escribir pruebas para cada funcionalidad utilizando Pytest.
+- **Pruebas de Integración**: Asegurar que la interacción entre los distintos componentes del backend funcione correctamente.
+
+### **Frontend**
+- **Pruebas Unitarias**: Crear pruebas para cada componente individual usando Jest y React Testing Library.
+- **Pruebas de Integración**: Verificar que los flujos de usuario completos funcionen sin errores.
+- **Validar Funcionalidades Clave**:
+  - Verificar que la selección de carpeta, procesamiento de archivos, autenticación y visualización de datos estén libres de errores.
+
+## 11. Documentación
+
+### **Guías de Usuario y Desarrollador**
+- **Configuración y Uso**: Documentar cómo configurar y utilizar el dashboard, incluyendo pasos para la selección de carpeta e inicio de sesión.
+- **Explicación de Métricas**: Incluir una sección que explique detalladamente las métricas mostradas en el dashboard.
+- **Guía de Escalabilidad**: Proveer instrucciones sobre cómo agregar nuevas funciones y secciones al proyecto.
+
+## 12. Metodología de Desarrollo Iterativo
+
+- **Sprints Cortos**:
+  - Dividir el desarrollo en sprints de una semana, priorizando las funcionalidades esenciales primero (MVP) y agregando incrementos de valor adicionales en cada sprint.
+- **Revisiones y Ajustes**:
+  - Al final de cada sprint, revisar el progreso y ajustar el plan según las necesidades y feedback recibido.
+
+## 13. Herramientas de Soporte
+
+- **GitHub**:
+  - Para el control de versiones y gestión de issues/tareas.
+- **Docker**:
+  - Para contenedorización del entorno de desarrollo y despliegue, asegurando consistencia entre diferentes entornos.
+- **CI/CD**:
+  - Configurar pipelines de integración y despliegue continuo usando GitHub Actions para automatizar pruebas y despliegues.
+
+## 14. Consideraciones de Seguridad y Escalabilidad
+
+- **Seguridad**:
+  - Implementar medidas de seguridad como hashing de contraseñas, protección contra ataques comunes (inyección SQL, XSS), y uso de HTTPS.
+- **Escalabilidad**:
+  - Diseñar la arquitectura del proyecto de manera modular, permitiendo la fácil incorporación de nuevas funcionalidades y secciones en el futuro.
+  - Utilizar patrones de diseño como separación de responsabilidades y servicios independientes si es necesario.
+
+# Resumen del Flujo de Trabajo Propuesto
+
+1. **Dividir el Proyecto en Tareas**: Identificar y listar las tareas necesarias.
+2. **Proporcionar Instrucciones**: Yo te enviaré las indicaciones detalladas para cada tarea.
+3. **Ejecutar y Reportar**: Tú realizarás la tarea y me informarás sobre su progreso o cualquier problema.
+4. **Revisar y Ajustar**: Resolveremos juntos cualquier inconveniente y confirmaremos la correcta ejecución.
+5. **Avanzar al Siguiente Paso**: Repetiremos el ciclo hasta completar todas las tareas del proyecto.
+
+Este enfoque asegura que trabajemos de manera organizada y eficiente, aprovechando nuestras fortalezas y garantizando un desarrollo exitoso de la aplicación.

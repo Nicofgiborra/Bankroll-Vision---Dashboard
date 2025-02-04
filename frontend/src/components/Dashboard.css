@@ -1,0 +1,83 @@
+/* --------------------------------------------------
+  ESTILOS PARA DASHBOARD
+-------------------------------------------------- */
+/* Variables */
+:root {
+  --metric-card-bg: rgba(255, 255, 255, 0.05);
+  --metric-card-hover: rgba(255, 255, 255, 0.1);
+  --metric-text-primary: #ffffff;
+  --metric-text-secondary: #b0b0b0;
+}
+
+/* Tarjetas de Métricas */
+.metric-card {
+  background: var(--metric-card-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: background 0.3s ease;
+}
+
+.metric-card:hover {
+  background: var(--metric-card-hover);
+}
+
+.metric-card h6 {
+  color: var(--metric-text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.metric-card h4 {
+  color: var(--metric-text-primary);
+  font-weight: 600;
+}
+
+/* Tabla de Sesiones */
+.sessions-table {
+  width: 100%;
+  margin-top: 2rem;
+  background: var(--metric-card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.sessions-table thead tr {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.sessions-table th,
+.sessions-table td {
+  padding: 1rem;
+  color: var(--metric-text-primary);
+}
+
+.sessions-table th {
+  text-align: left;
+  font-weight: 500;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Efectos de Hover */
+.btn-dashboard {
+  background: var(--primary-color);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-dashboard:hover {
+  background: var(--primary-color-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 170, 255, 0.4);
+}
