@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import './Login.css'; // Nueva versión con dark theme
 
-function Login() {
+function Login({ openRegister }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -92,7 +92,7 @@ function Login() {
 
           <p className="signup-text">
             ¿No tienes cuenta?
-            <a href="#!" className="signup-link">
+            <a href="#!" className="signup-link" onClick={openRegister}>
               Regístrate aquí
             </a>
           </p>

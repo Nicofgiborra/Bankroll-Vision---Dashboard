@@ -1,0 +1,291 @@
+/* =============================
+   VARIABLES Y RESET
+============================= */
+:root {
+  /* Paleta de colores base para el dark theme */
+  --bg-main: #121212;
+  --surface-color: #1f1f1f;
+  --text-color: #e0e0e0;
+  --accent-color: #4cc9f0; /* Cian luminoso */
+  --glow-color: rgba(76, 201, 240, 0.5); /* Brillo para efectos */
+  --gradient-dark: linear-gradient(
+    135deg,
+    #0d0d0d 0%,
+    #1b1b1b 50%,
+    #222222 100%
+  );
+  --shapes-bg: radial-gradient(circle at 10% 20%, #333 10%, transparent 30%),
+    radial-gradient(circle at 80% 0%, #222 15%, transparent 30%),
+    radial-gradient(circle at 50% 50%, #444 10%, transparent 30%);
+  --glass-dark: rgba(255, 255, 255, 0.07);
+  --transition-speed: 0.3s;
+  --radius: 14px;
+  --shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =============================
+   BODY Y ESTRUCTURA PRINCIPAL
+============================= */
+body,
+html {
+  width: 100%;
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  background: var(--shapes-bg), var(--gradient-dark);
+  background-blend-mode: overlay;
+  color: var(--text-color);
+  overflow-x: hidden;
+}
+
+/* =============================
+   ANIMACIONES
+============================= */
+@keyframes fadeInOverlay {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInPopup {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* =============================
+   POP-UP DE REGISTRO
+============================= */
+.registration-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85); /* Fondo más oscuro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeInOverlay var(--transition-speed) ease-out forwards;
+}
+
+.registration-content {
+  width: 100%;
+  max-width: 500px; /* Tamaño mayor para mayor legibilidad */
+  background: var(--glass-dark);
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius);
+  padding: 2.5rem; /* Más espacio interno */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  animation: fadeInPopup var(--transition-speed) ease-out forwards;
+  position: relative;
+  box-shadow: 0 0 15px var(--glow-color); /* Efecto de iluminación */
+}
+
+/* Botón de cierre */
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: color var(--transition-speed);
+}
+
+.close-button:hover {
+  color: var(--accent-color);
+}
+
+/* =============================
+   TITULO DEL FORMULARIO
+============================= */
+.form-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #fff; /* Aseguramos contraste */
+}
+
+/* =============================
+   FORMULARIO DE REGISTRO
+============================= */
+.registration-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Espacio entre campos */
+}
+
+/* Etiquetas y grupos de input */
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilos para el label (para que no desaparezca cuando se escribe) */
+.input-group label {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+/* Texto de pista (ej. formato de correo) */
+.hint-text {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin-top: 0.4rem;
+}
+
+/* Mensajes de error (por ejemplo, contraseñas que no coinciden) */
+.error-message {
+  font-size: 0.85rem;
+  color: #ff6b6b;
+  margin-top: 0.4rem;
+}
+
+/* Estilo de los inputs */
+.registration-content input {
+  padding: 0.9rem 1.2rem;
+  border-radius: var(--radius);
+  border: none;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.12);
+  color: var(--text-color);
+  font-size: 1rem;
+  transition:
+    background var(--transition-speed),
+    box-shadow var(--transition-speed);
+}
+
+/* Placeholder con un color más claro para diferenciarlo del texto */
+.registration-content input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Efecto al hacer foco en el input */
+.registration-content input:focus {
+  background-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 0 0 2px var(--accent-color);
+}
+
+/* =============================
+   GRUPO DE CONTRASEÑA
+============================= */
+/* Contenedor general que engloba: label + password-wrapper */
+.password-group {
+  display: flex;
+  flex-direction: column; /* Label arriba, luego password-wrapper */
+  gap: 0.5rem; /* Separación entre label y contenedor de input */
+}
+
+/* El label puede tener su propio estilo */
+.password-group label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #e0e0e0;
+}
+
+/* Contenedor que agrupa el input y el ícono (para ambos campos de contraseña) */
+.password-wrapper,
+.confirm-password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  border: none;
+  padding: 0.5rem 0.8rem;
+}
+
+/* Añadir padding derecho a los inputs para el espacio del ícono */
+.password-wrapper input,
+.confirm-password-wrapper input {
+  padding-right: 2.5rem; /* Espacio para el ícono */
+  width: 100%;
+}
+
+/* Ajustes del input para que ocupe el espacio restante */
+.password-wrapper input {
+  flex: 1; /* Toma todo el ancho disponible */
+  border: none;
+  outline: none;
+  background: transparent; /* El color de fondo lo da el contenedor */
+  color: #e0e0e0;
+  font-size: 1rem;
+  padding: 0.5rem; /* Ajusta según tu preferencia */
+}
+
+/* Efecto al hacer foco en el input */
+.password-wrapper input:focus {
+  /* Si quieres un efecto de sombra o cambiar color del contenedor en foco */
+  outline: 2px solid #4cc9f0; /* Por ejemplo */
+  border-radius: 14px;
+}
+
+/* Ícono para mostrar/ocultar contraseña */
+.toggle-password {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #ccc;
+  font-size: 1.2rem;
+  padding: 2px;
+  transition: color 0.3s;
+  z-index: 2;
+}
+
+.toggle-password:hover {
+  color: #4cc9f0;
+}
+
+/* =============================
+   BOTÓN DE REGISTRO
+============================= */
+.btn-register {
+  padding: 1rem;
+  font-size: 1.1rem;
+  border-radius: var(--radius);
+  background: var(--accent-color);
+  color: #121212;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+  text-align: center;
+  border: none;
+}
+
+.btn-register:hover {
+  transform: translateY(-2px);
+  background-color: #fff;
+  color: var(--accent-color);
+  box-shadow: 0 5px 15px rgba(76, 201, 240, 0.4);
+}
+
+/* =============================
+   MEDIA QUERIES
+============================= */
+@media (max-width: 768px) {
+  .registration-content {
+    width: 90%;
+    padding: 1.5rem;
+  }
+}

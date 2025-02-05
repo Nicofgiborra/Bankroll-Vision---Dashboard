@@ -139,6 +139,15 @@ html {
 /* Campo de contraseña con ícono para mostrar/ocultar */
 .password-group {
   position: relative;
+  display: flex;
+  align-items: left; /* Alineación vertical */
+}
+
+.toggle-password {
+  margin-left: 1rem; /* Espacio entre el input y el icono */
+  cursor: pointer;
+  color: #ccc;
+  font-size: 1.2rem;
 }
 
 .toggle-password {

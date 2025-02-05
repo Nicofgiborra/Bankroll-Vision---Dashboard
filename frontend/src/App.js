@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -10,6 +10,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 
 const Login = lazy(() => import('./components/Login'));
 const Dashboard = lazy(() => import('./components/Dashboard'));
+const Registration = lazy(() => import('./components/Registration'));
 
 const Loading = () => (
   <div className="loading-container">
@@ -18,6 +19,16 @@ const Loading = () => (
 );
 
 function App() {
+  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+
+  const openRegister = () => {
+    setIsRegisterOpen(true);
+  };
+
+  const closeRegister = () => {
+    setIsRegisterOpen(false);
+  };
+
   return (
     <Router>
       <div className="App">
@@ -26,7 +37,10 @@ function App() {
             path="/"
             element={
               <Suspense fallback={<Loading />}>
-                <Login />
+                <Login openRegister={openRegister} />
+                {isRegisterOpen && (
+                  <Registration closeRegister={closeRegister} />
+                )}
               </Suspense>
             }
           />
